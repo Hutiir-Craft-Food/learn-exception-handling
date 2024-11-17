@@ -25,6 +25,7 @@ public class BlahService {
     }
 
     public Object throwAnnotatedBlahException() {
-        throw new AnnotatedBlahException("Blah, i am an annotated teapot!");
+        log.error("Blah, i am an annotated teapot!");
+        throw new AnnotatedBlahException("Трясця, я - анотований чайник!");
     }
 }

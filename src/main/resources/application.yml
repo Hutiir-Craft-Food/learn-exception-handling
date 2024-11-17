@@ -17,6 +17,8 @@ logging:
 server:
   port: 9090
   error:
-    include-stacktrace: never
+    include-stacktrace: NEVER
+    include-message: ALWAYS
+    include-binding-errors: ON_PARAM
 #    whitelabel:
 #      enabled: false
