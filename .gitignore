@@ -1,0 +1,14 @@
+target/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+*.log
+
+.env
+.env.*
+
+# exclusions from ignore list:
+!.mvn/wrapper/maven-wrapper.jar

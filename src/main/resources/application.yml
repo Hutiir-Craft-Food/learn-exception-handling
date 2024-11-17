@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: @artifactId@
+  output:
+    ansi:
+      enabled: ALWAYS
+
+logging:
+  pattern:
+    dateformat: 'yyyy-MM-dd hh:mm:ss.SSS'
+  level:
+    root: WARN
+    com:
+      learn:
+        exceptionhandling: INFO
+
+server:
+  port: 9090
+  error:
+    include-stacktrace: never
+#    whitelabel:
+#      enabled: false
