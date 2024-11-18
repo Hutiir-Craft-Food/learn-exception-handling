@@ -13,3 +13,19 @@
 
 ## More Comprehensive Examples:
 - https://github.com/paulc4/mvc-exceptions
+
+## DefaultErrorAttributes:
+groupId: org.springframework.boot
+artifactId: spring-boot
+package: org.springframework.boot.web.servlet.error
+reference: [DefaultErrorAttributes](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/web/servlet/error/DefaultErrorAttributes.html)
+
+Default implementation of ErrorAttributes. Provides the following attributes when possible:
+- timestamp - The time that the errors were extracted
+- status - The status code
+- error - The error reason
+- exception - The class name of the root exception (if configured)
+- message - The exception message (if configured)
+- errors - Any ObjectErrors from a BindingResult or MethodValidationResult exception (if configured)
+- trace - The exception stack trace (if configured)
+- path - The URL path when the exception was raised
