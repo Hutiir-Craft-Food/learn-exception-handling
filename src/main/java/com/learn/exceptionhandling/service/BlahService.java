@@ -4,8 +4,12 @@ import com.learn.exceptionhandling.exception.AnnotatedBlahException;
 import com.learn.exceptionhandling.exception.AnotherBlahException;
 import com.learn.exceptionhandling.exception.BlahException;
 import com.learn.exceptionhandling.exception.UnknownBlahException;
+import com.learn.exceptionhandling.i18n.ExceptionMessageBundle;
+import com.learn.exceptionhandling.i18n.ExceptionMessageKeys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.Locale;
 
 
 @Slf4j
@@ -13,7 +17,8 @@ import org.springframework.stereotype.Service;
 public class BlahService {
 
     public Object throwBlahException() {
-        throw new BlahException("Blah, i am a teapot!");
+        String errorMessage = ExceptionMessageBundle.getMessage(ExceptionMessageKeys.I_AM_TEAPOT);
+        throw new BlahException(errorMessage);
     }
 
     public Object throwAnotherBlahException() {
@@ -26,6 +31,8 @@ public class BlahService {
 
     public Object throwAnnotatedBlahException() {
         log.error("Blah, i am an annotated teapot!");
-        throw new AnnotatedBlahException("Трясця, я - анотований чайник!");
+        String localizedErrorMessage = ExceptionMessageBundle
+                .getLocalizedMessage(ExceptionMessageKeys.I_AM_ANNOTATED_TEAPOT, new Locale("UA"));
+        throw new AnnotatedBlahException(localizedErrorMessage);
     }
 }

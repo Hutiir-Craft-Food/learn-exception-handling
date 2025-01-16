@@ -20,6 +20,11 @@ public class BlahExceptionHandler extends ResponseEntityExceptionHandler {
         return BlahErrorResponse.builder()
                 .status(HttpStatus.I_AM_A_TEAPOT.value())
                 .error(HttpStatus.I_AM_A_TEAPOT.getReasonPhrase())
+                // todo:
+                //  1.  check header Accept-Language in request
+                //  2. if Accept-Language header  is not set,
+                //      check user preferences, need to get principal
+                //  based on that, identify user's locale
                 .message(ex.getLocalizedMessage())
                 .path(request.getRequestURI())
                 .build();

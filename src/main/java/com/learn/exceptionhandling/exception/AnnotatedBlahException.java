@@ -9,8 +9,4 @@ public class AnnotatedBlahException extends RuntimeException {
     public AnnotatedBlahException(String message) {
         super(message);
     }
-
-    public AnnotatedBlahException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
