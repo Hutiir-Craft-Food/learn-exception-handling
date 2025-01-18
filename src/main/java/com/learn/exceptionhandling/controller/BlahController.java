@@ -95,13 +95,13 @@ public class BlahController {
     }
 
     @GetMapping(path = "/test/user")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')") // requires auth implementation
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')") // requires @EnableMethodSecurity
     public Object testUser () {
         return List.of("blah", "test", "user");
     }
 
     @PostMapping(path = "/test/admin")
-    @PreAuthorize("hasRole('ADMIN')") // requires auth implementation
+    @PreAuthorize("hasRole('ADMIN')") // requires @EnableMethodSecurity
     public Object testAdmin (@RequestBody Object data) {
         Map<String, Object> response = new HashMap<>();
         response.put("blah", "blah");

@@ -5,6 +5,10 @@ spring:
     ansi:
       enabled: ALWAYS
 
+jwt:
+  secret: 'blah-blah-secret'
+  session-timeout: 60 # seconds
+
 logging:
   pattern:
     dateformat: 'yyyy-MM-dd hh:mm:ss.SSS'
