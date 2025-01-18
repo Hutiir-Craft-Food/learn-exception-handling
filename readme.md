@@ -2,6 +2,7 @@
 
 ## References:
 - https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ResponseEntityExceptionHandler.html
+- https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html
 - https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
 - https://medium.com/@farzinpashaeee/8e1921e6c2a2
 - https://medium.com/@seonggil/e7c95216da8d
