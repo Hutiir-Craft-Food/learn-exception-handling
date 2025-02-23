@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Builder
 public record BlahErrorResponse (
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd\'T\'HH:mm:ss.SSSZ")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd\'T\'HH:mm:ss.SSSX")
         Date timestamp,
         int status,
         String error,

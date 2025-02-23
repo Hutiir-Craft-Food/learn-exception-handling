@@ -17,12 +17,12 @@ import java.util.Locale;
 public class BlahService {
 
     public Object throwBlahException() {
-        String errorMessage = ExceptionMessageBundle.getMessage(ExceptionMessageKeys.I_AM_TEAPOT);
-        throw new BlahException(errorMessage);
+        throw new BlahException("Blah, i am a teapot!");
     }
 
     public Object throwAnotherBlahException() {
-        throw new AnotherBlahException("Blah, i am just another teapot!");
+        String errorMessage = ExceptionMessageBundle.getMessage(ExceptionMessageKeys.I_AM_ANOTHER_TEAPOT);
+        throw new AnotherBlahException(errorMessage);
     }
 
     public Object throwUnknownBlahException() {

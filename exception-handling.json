@@ -1,264 +1,433 @@
 {
-  "info": {
-    "_postman_id": "be4d0761-1e1d-4c5f-bdd5-f66b7663f0f4",
-    "name": "learn",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-    "_exporter_id": "28556221"
-  },
-  "item": [
-    {
-      "name": "exception-handling",
-      "item": [
-        {
-          "name": "login user",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "// https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/\r",
-                  "try {\r",
-                  "    let response = pm.response.json();\r",
-                  "    pm.collectionVariables.set(\"access-token\", response[\"access-token\"]);\r",
-                  "} catch (error) {\r",
-                  "    console.error(error);\r",
-                  "}\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"username\": \"blah-user\",\r\n    \"password\": \"qwecxz123\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://{{host}}:{{port}}/auth"
-          },
-          "response": []
-        },
-        {
-          "name": "login admin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "// https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/\r",
-                  "try {\r",
-                  "    let response = pm.response.json();\r",
-                  "    pm.collectionVariables.set(\"access-token\", response[\"access-token\"]);\r",
-                  "} catch (error) {\r",
-                  "    console.error(error);\r",
-                  "}\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"qwecxz123\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://{{host}}:{{port}}/auth"
-          },
-          "response": []
-        },
-        {
-          "name": "login ghost",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "// https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/\r",
-                  "try {\r",
-                  "    let response = pm.response.json();\r",
-                  "    pm.collectionVariables.set(\"access-token\", response[\"access-token\"]);\r",
-                  "} catch (error) {\r",
-                  "    console.error(error);\r",
-                  "}\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"username\": \"ghost\",\r\n    \"password\": \"qwecxz123\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://{{host}}:{{port}}/auth"
-          },
-          "response": []
-        },
-        {
-          "name": "test",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://{{host}}:{{port}}/blah/test/public"
-          },
-          "response": []
-        },
-        {
-          "name": "test User",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access-token}}"
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "url": "http://{{host}}:{{port}}/blah/test/user"
-          },
-          "response": []
-        },
-        {
-          "name": "test Admin",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access-token}}"
-              }
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"blah\": \"test\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "http://{{host}}:{{port}}/blah/test/admin"
-          },
-          "response": []
-        },
-        {
-          "name": "1. ResponseStatusException",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://{{host}}:{{port}}/blah/response-status-exception"
-          },
-          "response": []
-        },
-        {
-          "name": "2. BlahException",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ua",
-                "type": "text"
-              }
-            ],
-            "url": "http://{{host}}:{{port}}/blah/blah-exception"
-          },
-          "response": []
-        },
-        {
-          "name": "3. AnotherBlahException",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://{{host}}:{{port}}/blah/another-blah-exception"
-          },
-          "response": []
-        },
-        {
-          "name": "4. AnnotatedBlahException",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://{{host}}:{{port}}/blah/annotated-blah-exception"
-          },
-          "response": []
-        },
-        {
-          "name": "5. UnknownBlahException",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://{{host}}:{{port}}/blah/unknown-blah-exception"
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "host",
-      "value": "localhost",
-      "type": "string"
-    },
-    {
-      "key": "port",
-      "value": "9090",
-      "type": "string"
-    },
-    {
-      "key": "access-token",
-      "value": "",
-      "type": "string"
-    }
-  ]
+	"info": {
+		"_postman_id": "be4d0761-1e1d-4c5f-bdd5-f66b7663f0f4",
+		"name": "learn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28556221"
+	},
+	"item": [
+		{
+			"name": "exception-handling",
+			"item": [
+				{
+					"name": "login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/\r",
+									"try {\r",
+									"    let response = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"access-token\", response[\"access-token\"]);\r",
+									"} catch (error) {\r",
+									"    console.error(error);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"blah-user\",\r\n    \"password\": \"qwecxz123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/auth",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/\r",
+									"try {\r",
+									"    let response = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"access-token\", response[\"access-token\"]);\r",
+									"} catch (error) {\r",
+									"    console.error(error);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"qwecxz123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/auth",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login ghost",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/\r",
+									"try {\r",
+									"    let response = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"access-token\", response[\"access-token\"]);\r",
+									"} catch (error) {\r",
+									"    console.error(error);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ghost\",\r\n    \"password\": \"qwecxz123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/auth",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/test/public",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"test",
+								"public"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/test/user",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"test",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"blah\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/test/admin",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"test",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1. response-status-exception",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/response-status-exception",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"response-status-exception"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. blah-exception",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ua",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/blah-exception",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"blah-exception"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. another-blah-exception",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/another-blah-exception",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"another-blah-exception"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. annotated-blah-exception",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/annotated-blah-exception",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"annotated-blah-exception"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. unknown-blah-exception",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/unknown-blah-exception",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"unknown-blah-exception"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. method not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/blah-exception",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"blah-exception"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. method not found Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/blah/blah-blah",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blah",
+								"blah-blah"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "9090",
+			"type": "string"
+		},
+		{
+			"key": "access-token",
+			"value": "",
+			"type": "string"
+		}
+	]
 }
