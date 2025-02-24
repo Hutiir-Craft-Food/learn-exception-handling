@@ -13,6 +13,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -21,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,7 +33,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class BlahControllerTest {
 
     // more about String Testing with MockMvc here:
-    // https://spring.io/guides/gs/testing-web
+    // - https://spring.io/guides/gs/testing-web
+    // - https://www.baeldung.com/spring-mvc-test-exceptions
 
     @Autowired
     private MockMvc mockMvc;
@@ -133,6 +138,30 @@ class BlahControllerTest {
             assertEquals("Internal Server Error", errorResponse.error());
             assertEquals("Blah, i am an unknown teapot!", errorResponse.message());
             assertEquals("/blah/unknown-blah-exception", errorResponse.path());
+        }
+    }
+
+    @Nested
+    class UserTests {
+
+        @Test
+        public void test_user_access () {
+            String expiredJwtToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9." +
+                    "eyJzdWIiOiJibGFoLXVzZXIiLCJleHAiOjE3NDAzNTM2MjIsImlhdCI6MTc0MDM1MzU2Mn0." +
+                    "gXCdsHdrNsK80dIwYAzIiC78uIteujERUTdJWHNTRnMhh_-rKn7BlTn3x1fxwXVhHah2Sc5zySJwBx6ADmW_Ww";
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Authorization", "Bearer " + expiredJwtToken);
+            HttpEntity<String> request = new HttpEntity<String>(headers);
+            BlahErrorResponse errorResponse = restTemplate.exchange(
+                    "http://localhost:{port}/blah/test/user",
+                    HttpMethod.GET, request,
+                    BlahErrorResponse.class, port).getBody();
+
+            assertNotNull(errorResponse.timestamp());
+            assertEquals(401, errorResponse.status());
+            assertTrue(errorResponse.message().contains("The Token has expired"));
+            assertEquals("/blah/test/user", errorResponse.path());
         }
     }
 
